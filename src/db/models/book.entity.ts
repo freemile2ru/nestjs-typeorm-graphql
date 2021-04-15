@@ -9,7 +9,7 @@ import {
   } from 'typeorm';
   import BookGenre from './book-genre.entity';
   import Author from './author.entity';
-  import { Field, ObjectType } from 'type-graphql';
+  import { Field, ObjectType } from '@nestjs/graphql';
   
   @ObjectType()
   @Entity({name: 'books'})

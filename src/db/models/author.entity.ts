@@ -5,21 +5,27 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
-  } from 'typeorm';
-  import Book from './book.entity';
-  
-  @Entity()
+} from 'typeorm';
+import Book from './book.entity';
+import { ObjectType, Field } from '@nestjs/graphql';
+
+  @ObjectType()
+  @Entity({name: 'authors'})
   export default class Author {
   
+    @Field()
     @PrimaryGeneratedColumn()
     id: number;
-  
+    
+    @Field()
     @Column()
     name: string;
   
+    @Field()
     @CreateDateColumn({name: 'created_at'})
     createdAt: Date;
   
+    @Field()
     @UpdateDateColumn({name: 'updated_at'})
     updatedAt: Date;
   

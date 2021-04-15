@@ -8,22 +8,29 @@ import {
   } from 'typeorm';
   import Genre from './genre.entity';
   import Book from './book.entity';
+  import { ObjectType, Field } from '@nestjs/graphql';
   
-  @Entity()
+  @ObjectType()
+  @Entity({"name": "book-genres"})
   export default class BookGenre {
-  
+    
+    @Field()
     @PrimaryGeneratedColumn()
     id: number;
   
+    @Field()
     @PrimaryColumn({name: 'book_id'})
     bookId: number;
   
+    @Field()
     @PrimaryColumn({name: 'genre_id'})
     genreId: number;
   
+    @Field()
     @CreateDateColumn({name: 'created_at'})
     createdAt: Date;
   
+    @Field()
     @UpdateDateColumn({name: 'updated_at'})
     updatedAt: Date;
   
