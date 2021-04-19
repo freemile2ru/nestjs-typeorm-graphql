@@ -8,6 +8,7 @@ import AuthorResolver from './resolvers/author.resolver';
 import BookResolver from './resolvers/book.resolver';
 import GenreResolver from './resolvers/genre.resolver';
 import BookGenreResolver from './resolvers/book-genre.resolver';
+import { genreBooksLoader } from './db/loaders/books.loader';
 
 
 const graphQLImports = [
@@ -27,6 +28,9 @@ const graphQLImports = [
      GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       playground: true,
+      context: {
+          genreBooksLoader: genreBooksLoader(),
+      }
     }),  
   ],  
   controllers: [AppController],  
